@@ -1,13 +1,14 @@
 import React from 'react';
 import './MainPage.css';
-import { SideBar } from './SideBar';
+import { SideBar } from './sideBar/SideBar.jsx';
+import { MiddleBar } from './middleBar/MiddleBar.jsx';
 
 export const MainPage = () => {
   return (
     <div className="background">
       <div className="glass">
         <SideBar />
-        <div></div>
+        <MiddleBar/>
         <div></div>
       </div>
     </div>
