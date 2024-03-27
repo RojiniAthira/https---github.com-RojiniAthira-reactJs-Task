@@ -7,41 +7,23 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "./Table.css";
+import gradeData from "./../../../Data/gradeData.json";
 
-function createData(name, trackingId, date, status) {
-  return { name, trackingId, date, status };
+function createData(id,coursecode, credits, grade) {
+  return { id,coursecode, credits, grade};
 }
 
-const rows = [
-  createData("Lasania Chiken Fri", 18908424, "2 March 2022", "Approved"),
-  createData("Big Baza Bang ", 18908424, "2 March 2022", "Pending"),
-  createData("Mouth Freshner", 18908424, "2 March 2022", "Approved"),
-  createData("Cupcake", 18908421, "2 March 2022", "Delivered"),
-];
+const rows = [];
+for (var i=0; i<gradeData.length; i++) {
+  if (gradeData[i].semester === '10'){
+    rows.push(createData(i,gradeData[i].course_code,
+      gradeData[i].credits,
+      gradeData[i].grade));
+  }
 
-
-const makeStyle=(status)=>{
-  if(status === 'Approved')
-  {
-    return {
-      background: 'rgb(145 254 159 / 47%)',
-      color: 'green',
-    }
-  }
-  else if(status === 'Pending')
-  {
-    return{
-      background: '#ffadad8f',
-      color: 'red',
-    }
-  }
-  else{
-    return{
-      background: '#59bfff',
-      color: 'white',
-    }
-  }
 }
+
+
 
 export default function BasicTable() {
   return (
@@ -54,28 +36,23 @@ export default function BasicTable() {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Product</TableCell>
-                <TableCell align="left">Tracking ID</TableCell>
-                <TableCell align="left">Date</TableCell>
-                <TableCell align="left">Status</TableCell>
-                <TableCell align="left"></TableCell>
+                <TableCell>Course Code</TableCell>
+                <TableCell align="left">Credits</TableCell>
+                <TableCell align="left">Grade</TableCell>
               </TableRow>
             </TableHead>
             <TableBody style={{ color: "white" }}>
               {rows.map((row) => (
                 <TableRow
-                  key={row.name}
+                  key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    {row.coursecode}
                   </TableCell>
-                  <TableCell align="left">{row.trackingId}</TableCell>
-                  <TableCell align="left">{row.date}</TableCell>
-                  <TableCell align="left">
-                    <span className="status" style={makeStyle(row.status)}>{row.status}</span>
+                  <TableCell align="left">{row.credits}</TableCell>
+                  <TableCell align="left">{row.grade}
                   </TableCell>
-                  <TableCell align="left" className="Details">Details</TableCell>
                 </TableRow>
               ))}
             </TableBody>
