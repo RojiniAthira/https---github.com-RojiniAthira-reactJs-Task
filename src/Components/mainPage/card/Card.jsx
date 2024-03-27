@@ -13,16 +13,16 @@ const Card = (props) => {
   return (
     <LayoutGroup>
       {expanded ? (
-        <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
+        <ExpandedCard param={props} setExpanded={() => setExpanded(false)}  />
       ) : (
-        <CompactCard param={props} setExpanded={() => setExpanded(true)} />
+        <CompactCard param={props} setExpanded={() => setExpanded(true)}  />
       )}
     </LayoutGroup>
   );
 };
 
 // Compact Card
-function CompactCard({ param, setExpanded }) {
+function CompactCard({ param, setExpanded}) {
   const Png = param.png;
   return (
     <motion.div
@@ -31,8 +31,8 @@ function CompactCard({ param, setExpanded }) {
         background: param.color.backGround,
         boxShadow: param.color.boxShadow,
       }}
-      layoutId="expandableCard"
-      onClick={setExpanded}
+      layoutId="compactCard"
+      onClick={()=>setExpanded()}
     >
       <div className="radialBar">
         <CircularProgressbar
@@ -44,13 +44,14 @@ function CompactCard({ param, setExpanded }) {
       <div className="detail">
         <Png />
         <span>{param.value}</span>
+        <span>Last Semester</span>
       </div>
     </motion.div>
   );
 }
 
 // Expanded Card
-function ExpandedCard({ param, setExpanded }) {
+function ExpandedCard({ param, setExpanded, cardId }) {
   const data = {
     options: {
       chart: {
@@ -80,7 +81,7 @@ function ExpandedCard({ param, setExpanded }) {
         background: param.color.backGround,
         boxShadow: param.color.boxShadow,
       }}
-      layoutId="expandableCard"
+      layoutId="expandedCard"
     >
       <div style={{ alignSelf: "flex-end", cursor: "pointer", color: "white" }}>
         <UilTimes onClick={setExpanded} />
