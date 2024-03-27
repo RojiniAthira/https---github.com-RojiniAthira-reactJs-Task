@@ -43,8 +43,7 @@ function CompactCard({ param, setExpanded }) {
       </div>
       <div className="detail">
         <Png />
-        <span>${param.value}</span>
-        <span>Last 24 hours</span>
+        <span>{param.value}</span>
       </div>
     </motion.div>
   );
@@ -58,47 +57,18 @@ function ExpandedCard({ param, setExpanded }) {
         type: "area",
         height: "auto",
       },
-
-      dropShadow: {
-        enabled: false,
-        enabledOnSeries: undefined,
-        top: 0,
-        left: 0,
-        blur: 3,
-        color: "#000",
-        opacity: 0.35,
-      },
-
-      fill: {
-        colors: ["#fff"],
-        type: "gradient",
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: "smooth",
-        colors: ["white"],
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm",
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          endingShape: 'rounded'
         },
       },
-      grid: {
-        show: true,
+      dataLabels: {
+        enabled: false
       },
       xaxis: {
-        type: "datetime",
-        categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z",
-        ],
+        categories: ['Sem1', 'Sem2', 'Sem3', 'Sem4', 'Sem5', 'Sem6','Sem7','Sem8','Sem9','Sem10'],
       },
     },
   };
@@ -117,7 +87,7 @@ function ExpandedCard({ param, setExpanded }) {
       </div>
         <span>{param.title}</span>
       <div className="chartContainer">
-        <Chart options={data.options} series={param.series} type="area" />
+        <Chart options={data.options} series={param.series} type="bar" />
       </div>
       <span>Last 24 hours</span>
     </motion.div>
