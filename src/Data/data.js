@@ -113,13 +113,13 @@ export const cardsData = [
       backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
       boxShadow: "0px 10px 20px 0px #e0c6f5",
     },
-    barValue: calculateCGPA("9") * 10,
-    value: calculateCGPA("9"),
+    barValue: calculateCGPA("10") * 10,
+    value: calculateCGPA("10"),
     png: UilClipboardAlt,
     series: [
       {
         name: "CGPA",
-        data: getCGPA(9),
+        data: getCGPA(10),
       },
     ],
   },

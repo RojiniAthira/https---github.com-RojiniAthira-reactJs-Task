@@ -55,7 +55,7 @@ function ExpandedCard({ param, setExpanded, cardId }) {
   const data = {
     options: {
       chart: {
-        type: "area",
+        type: "bar",
         height: "auto",
       },
       plotOptions: {
